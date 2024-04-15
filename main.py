@@ -1,10 +1,15 @@
 from syllables import *
 
-# Reading file 
-print(paragraph)
+# Input garnered
+input = input("Enter a paragraph => ").strip()
+
+# Open a file in read mode
+with open(input, 'r') as file:
+    # Read the entire contents of the file
+    content = file.read()
 
 # Stores all sentences from paragraph in seperate list
-container_sentence = paragraph.split(".")
+container_sentence = file.split(".")
 
 # Popped to remove the blank sentence created
 container_sentence.pop()
