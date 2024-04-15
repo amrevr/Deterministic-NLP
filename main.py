@@ -46,7 +46,7 @@ The words are then appened to a new list, which is then used to find phw
 '''
 i = 0
 hard_words = []
-container_words = paragraph.split()
+container_words = file.split()
 
 # Used in calculating ASYL
 count_syllables = 0
