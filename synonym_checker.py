@@ -1,9 +1,6 @@
 import nltk
 from nltk.corpus import wordnet
 
-# Download WordNet data (run this the first time you use NLTK)
-nltk.download('wordnet')
-
 def are_synonyms(word1, word2):
     # Get synsets for each word
     synsets1 = wordnet.synsets(word1)
