@@ -16,7 +16,7 @@ The way the variables are calculated is explained in the code, if not self-expla
 These statistics provide the end-user with enough information to make a rationale judgement on 
 the readability of their paragraphs/articles etc.
 """
-from syllables import *
+from base.syllables import *
 
 # Input garnered
 paragraph = input("Enter a paragraph => ").strip()

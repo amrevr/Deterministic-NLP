@@ -1,22 +1,26 @@
+import nltk
 from nltk.corpus import wordnet
 
-import nltk
+# Download WordNet data (run this the first time you use NLTK)
 nltk.download('wordnet')
 
 def are_synonyms(word1, word2):
-    synonyms = []
-
-    # Get synsets for both words
+    # Get synsets for each word
     synsets1 = wordnet.synsets(word1)
     synsets2 = wordnet.synsets(word2)
 
-    # Extract synonyms from each synset
-    for synset in synsets1:
-        for lemma in synset.lemmas():
-            synonyms.append(lemma.name())
+    # Check for common synonyms
+    for synset1 in synsets1:
+        for synset2 in synsets2:
+            if synset1 == synset2:  # Check if the synsets are the same
+                return True
+            # Check if there's any lemma in common between the synsets
+            for lemma1 in synset1.lemmas():
+                for lemma2 in synset2.lemmas():
+                    if lemma1.name() == lemma2.name():
+                        return True
 
-    # Check if any synonym of word1 matches with word2
-    return any(synonym in synonyms for synonym in synsets2)
+    return False
 
 # Example usage
 word1 = "happy"

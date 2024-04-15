@@ -1,4 +1,4 @@
-from syllables import *
+from base.syllables import *
 
 # Input garnered
 input = input("Enter a paragraph => ").strip()
