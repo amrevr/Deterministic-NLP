@@ -4,6 +4,7 @@ from nltk import word_tokenize
 
 # Emotion words to check against
 emotion_words = ["happy", "sad", "anger", "disgust", "surprise", "fear"]
+emotion_dict = {emotion: 0 for emotion in emotion_words}
 
 def main(input_file_path):
     try:
@@ -20,10 +21,10 @@ def main(input_file_path):
 
             # Iterate through each word and check against emotion words
             for word in words:
-                for emotion_word in emotion_words:
-                    # Check if the word is a synonym of the emotion word
-                    if synonym_checker.is_synonym(word, emotion_word):
-                        print(f"Word '{word}' is a synonym of '{emotion_word}'")
+                # Check if the word is a synonym of any emotion word
+                for emotion in emotion_words:
+                    if synonym_checker.are_synonyms(word, emotion):
+                        print(f"Word '{word}' is a synonym of '{emotion}'")
 
     except FileNotFoundError:
         print(f"Error: File '{input_file_path}' not found.")
