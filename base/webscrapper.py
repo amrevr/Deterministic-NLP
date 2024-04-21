@@ -18,7 +18,7 @@ def get_synonyms(word):
             return set()
     else:
         print(f"Failed to fetch synonyms for {word}.")
-        return set()
+        return set() # Theoretically should never happen
 
 def main():
     emotion_dict = {}

@@ -1,6 +1,6 @@
-from webscrapper import get_synonyms
-from tokenizer import tokenize_file
-from readability import calculate_confidence
+import webscrapper as wb
+import tokenizer as tk
+import readability as rd
 import os
 
 def nlp(emotion_words, tokens):
@@ -29,12 +29,12 @@ def main():
     emotion_dict = {}
     emotions = ["happy", "sad", "fear", "surprise", "disgust", "anger"]
     for emotion in emotions: 
-        emotion_dict[emotion] = get_synonyms(emotion)
+        emotion_dict[emotion] = wb.get_synonyms(emotion)
     print("Finished processing emotion synonyms...")
 
     # Process and tokenize file
     file_path = input("Enter relative-file path: ").strip()
-    file_tokens = tokenize_file(file_path)
+    file_tokens = tk.tokenize_file(file_path)
     print("Finished tokenizing file...")
     # "NLP"
     most_expressed_emotion = nlp(emotion_dict, file_tokens)
@@ -51,7 +51,7 @@ def main():
         text = file.read()
 
     # Calculate confidence based on readability metrics
-    confidence = calculate_confidence(text)
+    confidence = rd.calculate_confidence(text)
     print(f"\nConfidence in Text: {confidence:.2f}%")
 
 # Guard to prevent program from executing if its not being ran
